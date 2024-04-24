@@ -17,20 +17,11 @@
     li {
       list-style-type: none;
     }
+    ul {
+      display: flex;
+      justify-content: space-evenly;
+    }
 
-    #wapper {
-      display: flex;
-      flex-direction: column;
-      width: 100%;
-    }
-    .section {
-      background-color: fuchsia;
-      display: flex;
-      flex-direction: column;
-      margin-left: 5;
-      margin: 5;
-      width: 40px;
-    }
     #header {
       width: 100%;
       height: 100px;
@@ -41,33 +32,35 @@
       border-radius: 50px;
     }
     #nav {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-evenly;
       background-color: pink;
       border-radius: 30px;
+      flex-direction: row;
+      font-size: 25px;
+      height: 50px;
     }
     #left {
-      background-color: darkorchid;
-      display: flex;
       flex-grow: 1;
       border-radius: 50px;
     }
     #right {
-      background-color: deeppink;
       display: flex;
       flex-grow: 1;
-      border-radius: 50px;
+      flex-direction: column;
+    }
+    #footer {
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
   </style>
   <body>
     <div id="wapper"></div>
     <h1>main.html</h1>
-    <header id="header">
+    <div id="header">
       <img src="../resources/img/쇼핑.jpg" width="50" height="50" />
       <a><h1>Wed Shopping</h1></a>
-    </header>
-    <nav id="nav">
+    </div>
+    <div id="nav">
       <ul class=".section">
         <li><a href="#">home</a></li>
         <li><a href="#">shopping about</a></li>
@@ -75,33 +68,30 @@
         <li><a href="#">my account</a></li>
         <li><a href="#">comtacts</a></li>
       </ul>
-    </nav>
-    <aside id="right">
-      <p>현재 쇼핑카트에 물품이 없습니다.</p>
-      <p>쇼핑카트 보기</p>
-    </aside>
-    <div id="shopcart"></div>
-    <div id="login">
-      <aside id="left">
-        <h2>카테고리</h2>
-        <ul class=".section">
-          <li><a href="../20240423/computer.html">컴퓨터</a></li>
-          <li><a href="../20240423/의류.html">의류</a></li>
-          <li><a href="../20240423/음악.html">음악</a></li>
-          <li><a href="../20240423/영화.html">영화</a></li>
-          <li><a href="../20240423/스포츠 레져.html">스포츠/레져</a></li>
-          <li><a href="../20240423/가구 인테리어.html">가구/인테리어</a></li>
-          <li><a href="../20240423/식품.html">식품</a></li>
-        </ul>
-      </aside>
-      <h4>Log In</h4>
-      <form action="#"></form>
     </div>
-    <section id="main">
+    <div id="left">
+      <h2>카테고리</h2>
+      <ul>
+        <li><a href="../20240423/computer.html">컴퓨터</a></li>
+        <li><a href="../20240423/의류.html">의류</a></li>
+        <li><a href="../20240423/음악.html">음악</a></li>
+        <li><a href="../20240423/영화.html">영화</a></li>
+        <li><a href="../20240423/스포츠 레져.html">스포츠/레져</a></li>
+        <li><a href="../20240423/가구 인테리어.html">가구/인테리어</a></li>
+        <li><a href="../20240423/식품.html">식품</a></li>
+      </ul>
+    </div>
+    <div id="right">
+      <h4>Shopping Cart</h4>
+      <p>현재 쇼핑카트에 물품이 없습니다.</p>
+      <p><a></a>쇼핑카트 보기</p>
+    <div id="footer">
+      <h2>2019.08.23 DW아카데미 042-123-4567</h2>
+    </div>
+    <div id="main">
       <article id="article1">
         <iframe src="../20240423/computer.html" name="ifr"> </iframe>
       </article>
-    </section>
-    <footer id="footer">2019.08.23 DW아카데미 042-123-4567</footer>
+    </div>
   </body>
 </html>
