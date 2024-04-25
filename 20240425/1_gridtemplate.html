@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+    }
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+    .container {
+      padding: 0;
+      margin: 0;
+      list-style-type: none;
+      border: 5px solid teal;
+
+      height: 500px;
+
+      display: grid;
+      /* grid-template-columns: 100px 200px;
+      grid-template-rows: 100px 200px; */
+
+      /* grid-template-columns: 10% 20% 20% 10%;
+      grid-template-rows: 10% 20% 20%; */
+      /* 
+      grid-template-columns: 1fr 2fr;
+      grid-template-rows: 1fr 2fr; */
+
+      /* grid-template-columns: 100px 20% 1fr; */
+    }
+    li {
+      background-color: beige;
+      border: 5px solid tomato;
+      border-radius: 8px;
+
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+  </style>
+  <body>
+    <ul class="container">
+      <li id="item">1</li>
+      <li id="item">2</li>
+      <li id="item">3</li>
+      <li id="item">4</li>
+      <li id="item">5</li>
+      <li id="item">6</li>
+      <li id="item">7</li>
+      <li id="item">8</li>
+      <li id="item">9</li>
+    </ul>
+  </body>
+</html>
