@@ -50,6 +50,12 @@
       transform: scale(0.75, 0.5);
       transition: 1s linear;
     }
+    .skew:hover {
+      /* skew: 요소를 X축으로 x각도만큼, Y축으로 y각도만큼 기울인다. */
+      /* transform: skew(50deg, 0); */
+      transform: skew(50deg);
+      transition: 1s linear;
+    }
   </style>
   <body>
     <div>
@@ -61,7 +67,7 @@
     </div>
 
     <div>
-      <div></div>
+      <div class="skew">skew</div>
     </div>
 
     <div>
