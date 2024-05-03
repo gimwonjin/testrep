@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      margin: 0;
+    }
+    html,
+    body {
+      width: 100%;
+      height: 100%;
+    }
+    .container {
+      /* width: 300px; */
+      padding: 0;
+      margin: 0;
+      list-style-type: none;
+      border: 5px solid teal;
+
+      height: 500px;
+
+      display: grid;
+      /* grid-template-columns: 1fr 1fr 1fr;
+      align-items: center;
+      justify-items: end; */
+
+      grid-template-rows: 80px 80px 80px;
+      grid-template-columns: 100px 100px 100px;
+
+      /* align-content: space-evenly; */
+
+      justify-content: space-evenly;
+
+      /* grid-template-columns: 1fr 1fr 1fr;
+      align-items: start;
+      justify-items: start; */
+    }
+
+    li {
+      background-color: beige;
+      border: 5px solid tomato;
+      border-radius: 8px;
+
+      display: flex;
+      justify-content: center;
+    }
+    /* li:nth-child(1) {
+      justify-self: start;
+      align-self: self-start;
+    }
+    li:nth-child(3) {
+      justify-self: end;
+      align-self: self-start;
+    }
+    li:nth-child(6) {
+      justify-self: end;
+      align-self: center;
+    }
+    li:nth-child(9) {
+      justify-self: end;
+      align-self: end;
+    }
+
+    li:nth-child(2) {
+      justify-self: center;
+      align-self: self-start;
+    }
+
+    li:nth-child(5) {
+      justify-self: center;
+      align-self: center;
+    }
+    li:nth-child(8) {
+      justify-self: center;
+      align-self: self-end;
+    }
+    li:nth-child(7) {
+      align-self: self-end;
+      justify-self: start;
+    }
+    li:nth-child(4) {
+      justify-self: self-start;
+      align-self: center;
+    } */
+  </style>
+  <body>
+    <ul class="container">
+      <li id="item">1</li>
+      <li id="item">2</li>
+      <li id="item">3</li>
+      <li id="item">4</li>
+      <li id="item">5</li>
+      <li id="item">6</li>
+      <li id="item">7</li>
+      <li id="item">8</li>
+      <li id="item">9</li>
+    </ul>
+  </body>
+</html>
