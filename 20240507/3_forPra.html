@@ -13,6 +13,7 @@
   ***** -->
     &nbsp;
     <script>
+      // 1 ~ 20 까지의 숫자 중 짝수만 출력하세요.
       let x = 4;
       for (let i = 2; i <= 20; i = i + 2) {
         document.write(`<h1>${i}</h1>`);
@@ -83,14 +84,14 @@
 
       //3. 계산된 합을 화면에 출력한다.
 
-      // let range = +prompt("숫자를 입력하세요.");
-      // let sum = 0;
-      // let i = 0;
-      // for (let i = 1; i <= range; i++) {
-      //   sum += i;
-      // }
-      // document.write(`사용자가 입력한 숫자 : ${range}, 총합 : ${sum}`);
-      // document.write(`<hr>`);
+      let range = +prompt("숫자를 입력하세요.");
+      let sum = 0;
+      let i = 0;
+      for (let i = 1; i <= range; i++) {
+        sum += i;
+      }
+      document.write(`사용자가 입력한 숫자 : ${range}, 총합 : ${sum}`);
+      document.write(`<hr>`);
 
       //     *
       //    ***
@@ -98,23 +99,23 @@
       //  *******
       // *********
 
-      // for (let i = 1; i <= 5; i++) {
-      //   for (let k = 4; k >= i; k++) {
-      //     document.write(`&nbsp;`);
-      //   }
-      //   for (let j = 1; j <= 2 * i - 1; j++) {
-      //     document.write(`*`);
-      //   }
-      // for (let j = 1; j <= i; j++) {
-      //   document.write(`*`);
-      // }
-      // for (let x = 1; x < i; x++) {
-      //   document.write(`*`);
-      // }
+      for (let i = 1; i <= 5; i++) {
+        for (let k = 4; k >= i; k++) {
+          document.write(`&nbsp;`);
+        }
+        for (let j = 1; j <= 2 * i - 1; j++) {
+          document.write(`*`);
+        }
+        for (let j = 1; j <= i; j++) {
+          document.write(`*`);
+        }
+        for (let x = 1; x < i; x++) {
+          document.write(`*`);
+        }
 
-      // document.write(`<br>`);
-      // }
-      // document.write(`<hr>`);
+        document.write(`<br>`);
+      }
+      document.write(`<hr>`);
       //    *********
       //     *******
       //      *****
