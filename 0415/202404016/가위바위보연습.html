@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>가위바위보 연습</title>
+  </head>
+  <body>
+    <script>
+      let son1;
+      let son2;
+      let user1;
+      let user2;
+      let result;
+
+      son1 = prompt("첫번째 사람의 가위바위보를 입력하세요");
+      son2 = prompt("두번째 사람의 가위바위보를 입력하세요");
+
+      if (son1 == "가위") {
+        useer1 = 1;
+      } else if (son1 == "바위") {
+        user1 = 2;
+      } else if (son1 == "보") {
+        user1 = 3;
+      }
+
+      if (son2 == "가위") {
+        user2 = 1;
+      } else if (son2 == "바위") {
+        user2 = 2;
+      } else if (son2 == "보") {
+        user2 = 3;
+      }
+
+      switch (user1 - user2) {
+        case -2:
+        case 1:
+          result = "첫번쨰 사람이 승리!!";
+
+          break;
+
+        case -1:
+        case 2:
+          result = "두번쨰 사람이 승리!!";
+
+          break;
+
+        default:
+          result = "무승부!!";
+          break;
+      }
+
+      document.write(`
+      <h1>첫번쨰 사람 : ${son1}</h1>
+      <h1>두번째 사람 : ${son2}</h1>
+      <h1>결과 : ${result}</h1>
+      `);
+    </script>
+  </body>
+</html>
