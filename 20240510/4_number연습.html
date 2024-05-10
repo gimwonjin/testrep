@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>연습</title>
+  </head>
+  <body>
+    <h1>Number Guess</h1>
+    <p>1부터 100 사이의 정수를 입력하세요.</p>
+    <input id="number" type="text" value="" />
+    <button onclick="clickFn()">숫자 추측</button>
+    <p id="message"></p>
+  </body>
+  <script>
+    // 변수 선언
+    const input = document.querySelector("#number");
+    const pTag = document.querySelector("#message");
+    let randNum = 0;
+    let resStr = "";
+    const MAX_COUNT = 5;
+    let count = 0;
+
+    function reset() {
+      count = 0;
+      randnum = getRandom();
+      pTag.innerHTML = "";
+      resStr = "";
+      input.value = "";
+    }
+
+    function getRandom() {
+      return parseInt(Math.random() * 100) + 1;
+    }
+    randNum = getRandom();
+
+    function clickFn() {
+      if (count == MAX_COUNT) {
+        reset();
+        return false;
+      }
+      let inputNum = input.value;
+      if (randNum == inputNum) {
+        resStr = `정답입니다!!!`;
+        alert(resStr);
+        reset();
+      } else {
+        count++;
+        if (randNum > inputNum) {
+          resStr = `입력하신 숫자보다 큽니다. 입력 하신 숫자 : ${inputNum}<br>`;
+        } else {
+          resStr = `입력하신 숫자보다 작습니다. 입력 하신 숫자 : ${inputNum}<br>`;
+        }
+      }
+      pTag.innerHTML += resStr;
+
+      if (MAX_COUNT == count) {
+        resStr = `게임에서 패배하셨습니다. 입력하신 숫자 : ${randNum} 이였습니다`;
+        pTag.innerHTML = resStr;
+      }
+    }
+  </script>
+</html>
