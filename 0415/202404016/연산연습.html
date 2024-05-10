@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>연산 연습</title>
+  </head>
+  <body>
+    <script>
+      let a;
+      let b;
+      let c;
+      let result;
+
+      a = +prompt("첫번쨰 숫자를 입력하세요");
+      b = +prompt("두번쨰 숫자를 입력하세요");
+      c = prompt("연산자를 입력하세요(+, -, *, /, % 중에 하나)");
+      if (c == "+") {
+        result = a + b;
+      } else if (c == "-") {
+        result = a - b;
+      } else if (c == "*") {
+        result = a * b;
+      } else if (c == "/") {
+        result = a / b;
+      } else {
+        result = a % b;
+      }
+
+      document.write(`<h1>${a} ${c} ${b} = ${result}</h1>`);
+    </script>
+  </body>
+</html>
