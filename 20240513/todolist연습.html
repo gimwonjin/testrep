@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>todolist 연습</title>
+  </head>
+  <body>
+    <input id="input" placeholder="Add to do List" />
+    <button onclick="addTodolist()">CLICH</button>
+    <div></div>
+  </body>
+  <script>
+    const colorArr = [];
+
+    function addTodolist() {
+      const input = document.querySelector("#input");
+      const inputValue = input.value;
+
+      const pTag = document.createElement("p");
+      pTag.innerHTML = inputValue;
+
+      for (let i = 0; i < 3; i++) {
+        const randNum = parseInt(Math.random() * 256);
+        colorArr.push(randNum);
+      }
+      pTag.style.backgroundColor = `rgb(${colorArr.toString()})`;
+      div.append("pTage");
+      input.value = "";
+    }
+  </script>
+</html>

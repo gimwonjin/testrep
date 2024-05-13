@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>색상 변경 함수</title>
+  </head>
+  <style>
+    div {
+      border: 2px solid red;
+      width: 300px;
+      height: 200px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 2.5rem;
+    }
+  </style>
+  <body>
+    <div id="chgColor">
+      <span>kjy</span>
+    </div>
+    <br />
+    <button onclick="chgText()">텍스트입력</button>
+    <button onclick="chgBkGndColor()">배경색상변경</button>
+    <button onclick="chgFont()">폰트색상색상변경</button>
+  </body>
+  <script>
+    function chgText() {
+      // 1. 사용자에게 입력받은 prompt 을 띄운다.
+      const text = prompt("텍스트틀 입력해주세요");
+
+      // 2. 입력받은 텍스트를 넣을줄 요소를 가져온다.
+      const divEl = document.querySelector("#chgColor");
+
+      // 3. 가져온 요소에 입력받은 텍스트를 넣어준다.
+      divEl.innerHTML = text;
+    }
+
+    function chgBkGndColor() {
+      // 1. 사용자에게 색상명을 입력받은다
+      const bkColor = prompt("변경한 색상명을 입력하세요");
+      // 2. 적용한 요소를 가져온다.
+      const divEl = document.querySelector("#chgColor");
+      //3. 가져온 요소에 색상을 적용한다.
+      divEl.style.backgroundColor = bkColor;
+    }
+
+    function chgFont() {
+      const font = prompt("변경한 폰트 색상명을 입력하세요");
+      const divEl = document.querySelector("#chgColor");
+      divEl.style.color = font;
+    }
+  </script>
+</html>
