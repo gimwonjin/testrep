@@ -80,12 +80,15 @@
       const arr = ["apply", "pie", "fig", "melon", "pear", "peach"];
 
       function solution1(inputValue) {
-        arr.push("banana");
         // 소스코드 작성
+        arr.push("banana");
+        return arr;
       }
 
       // 함수 실행 코드
+      console.log(`-----solution1-----`);
       console.log(solution1(arr));
+      console.log(`-------------------`);
 
       // ---------------------------------------------------------------
 
@@ -98,7 +101,13 @@
 
       // 함수 실행 코드
 
+      return arr2;
+
+      // 함수 실행 코드
+      console.log(`-----solution2-----`);
+
       console.log(solution2(arr2));
+      console.log(`-------------------`);
 
       // ---------------------------------------------------------------
 
@@ -107,11 +116,16 @@
 
       function solution3(inputValue) {
         //소스코드 작성
+
+        // 소스코드 작성
+        const arr3 = inputValue.length;
+        return length;
       }
 
       // 함수 실행 코드
+      console.log(`-----solution3-----`);
       console.log(solution3(arr3));
-
+      console.log(`-------------------`);
       // ---------------------------------------------------------------
 
       //4. 입력 받은 배열의 마지막 값을 제거(삭제)후 반환하세요.
@@ -119,10 +133,16 @@
       function solution4(inputValue) {
         //   소스코드 작성
         arr4.pop("peach");
+        // 소스코드 작성
+
+        return inputValue.pop();
       }
 
       // 함수 실행 코드
+      console.log(`-----solution4-----`);
       console.log(solution4(arr4));
+      console.log(arr4);
+      console.log(`-------------------`);
 
       // ---------------------------------------------------------------
 
@@ -131,10 +151,16 @@
 
       function solution5(inputValue) {
         //    소스코드 작성
+
+        // 소스코드 작성
+        return inputValue.shift();
       }
 
       // 함수 실행 코드
+      console.log(`-----solution5-----`);
       console.log(solution5(arr5));
+      console.log(arr5);
+      console.log(`-------------------`);
 
       // ---------------------------------------------------------------
 
@@ -143,13 +169,32 @@
 
       function solution6(inputValue) {
         //    소스코드 작성
+
+        //  함수 실행 코드
+
+        // 소스코드 작성
+        return inputValue.slice(1, 4);
       }
 
-      //  함수 실행 코드
+      // 함수 실행 코드
+      console.log(`-----solution6-----`);
+
       console.log(solution6(arr6)); // ["pie", "fig", "melon"] 나와야함
       console.log(arr6 == solution6(arr6)); // false 나와야함
+      console.log(`-------------------`);
 
       // ---------------------------------------------------------------
+
+      //7. 입력받은 2개의 배열을 합쳐서 반환하세요.
+      const arr7 = ["apply", "pie", "fig"];
+      const arr8 = ["melon", "pear", "peach"];
+      function solution7(inputValue1, inputValue2) {
+        // 소스코드 작성
+        return inputPrompt1.concat(inputPrompt2);
+      }
+
+      // 함수 실행 코드
+      console.log(solution7(arr7, arr8));
     </script>
   </body>
 </html>
