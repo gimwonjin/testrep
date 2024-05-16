@@ -31,7 +31,8 @@
     // 4. 1번에서 선언한 변수 두개의 대소 비교를 하여 어떤 변수가 큰지를
     // alert 창으로 출력할 수 있게 작성해보세요.(조건문 사용)
     if (a < b) {
-      alert("a는 b 보다 큽니다");
+      alert("a가 b 보다 큽니다");
+    } else {
       alert("b는 a 보다 큽니다");
     }
     // 5. 비어있는 객체를 하나 생성해보세요.
@@ -51,13 +52,15 @@
     arr1.push(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
     document.write(`<h1>${arr1}</h1>`);
     // 9. 비어있는 배열을 선언하고 1 ~ 100 까지의 숫자를 추가해보세요.(반복문 사용)
+    const arr2 = [];
     for (let i = 1; i <= 100; i++) {
-      document.write(`<h1>${i}</h1>`);
+      arr2.push(i);
     }
+    document.write(`<h1>${arr2}</h1>`);
 
     // 10. 비어있는 배열을 선언하고 1 ~ 100 까지의 숫자중 짝수만 추가해보세요.(반복문 사용)
     let arr = [];
-    for (let i = 0; i <= 100; i++) {
+    for (let i = 1; i <= 100; i++) {
       if (i % 2 == 0) {
         arr.push(i);
       }
@@ -72,9 +75,9 @@
       const pTag = document.createElement(`p`);
       pTag.style.color = "bule";
       pTag.style.backgroundColor = "yellow";
-      pTag.innerHTML = " p태그를 추가";
+      pTag.innerHTML = " p 태그를 추가";
 
-      document.querySelector(`body`).append(`p`);
+      document.querySelector(`body`).append(pTag);
     }
     color();
   </script>
