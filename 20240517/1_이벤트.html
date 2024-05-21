@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body></body>
+  <script>
+    // cut, copy, paste
+    const textareaEl = document.querySelector("textareaEl");
+    textareaEl.addEventListener("cut", function () {
+      alert("cut 이벤트 발생");
+    });
+    textareaEl.addEventListener("copy", function () {
+      alert("copy 이벤트 발생");
+    });
+    textareaEl.addEventListener("paste", function () {
+      alert("paste 이벤트 발생");
+    });
+  </script>
+</html>
