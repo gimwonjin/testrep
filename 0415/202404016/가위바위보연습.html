@@ -7,17 +7,18 @@
   </head>
   <body>
     <script>
-      let son1;
-      let son2;
+      let son1 = 0;
+      let son2 = 0;
       let user1;
       let user2;
       let result;
 
-      son1 = prompt("첫번째 사람의 가위바위보를 입력하세요");
+      son1 = prompt("첫번쨰 사람의 가위바위보를 입력하세요");
+
       son2 = prompt("두번째 사람의 가위바위보를 입력하세요");
 
       if (son1 == "가위") {
-        useer1 = 1;
+        user1 = 1;
       } else if (son1 == "바위") {
         user1 = 2;
       } else if (son1 == "보") {
@@ -35,26 +36,22 @@
       switch (user1 - user2) {
         case -2:
         case 1:
-          result = "첫번쨰 사람이 승리!!";
-
+          result = "첫번째 사람 승!";
           break;
 
         case -1:
         case 2:
-          result = "두번쨰 사람이 승리!!";
-
+          result = "두번쨰 사람 승!";
           break;
 
         default:
-          result = "무승부!!";
+          result = "무승부!";
           break;
       }
 
-      document.write(`
-      <h1>첫번쨰 사람 : ${son1}</h1>
-      <h1>두번째 사람 : ${son2}</h1>
-      <h1>결과 : ${result}</h1>
-      `);
+      document.write(`<h1>첫번쨰 사람 : ${son1}</h1>`);
+      document.write(`<h1>두번쨰 사람 : ${son2}</h1>`);
+      document.write(`<h1>결과 : ${result}</h1>`);
     </script>
   </body>
 </html>
