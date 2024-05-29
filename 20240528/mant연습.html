@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../resources/js/jquery-3.6.4.js"></script>
+  </head>
+  <style>
+    p {
+      cursor: pointer;
+    }
+    img {
+      width: 200px;
+      height: 200px;
+    }
+  </style>
+  <body>
+    <p>강아지</p>
+    <p>악어</p>
+    <p>다람쥐</p>
+    <p>공룡</p>
+  </body>
+  <script>
+    const imgArr = ["강아지.jpg", "악어.jpg", "다람쥐.jpg", "공룡.jpg"];
+    $("p").on("click", function () {
+      const index = $(this).index();
+      const pTag = $("p");
+      const imgTag = `<img src="../resources/img/${imgArr[index]}"/>`;
+      //   $(this).append(imgTag);
+      //   $(imgTag).appendTo(this);
+      //   $(this).prepend(imgTag);
+      $(imgTag).prependTo(this);
+    });
+  </script>
+</html>
