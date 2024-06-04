@@ -142,5 +142,10 @@
         trChildren[i].innerHTML = `<input type='text' value='${tdText}' />`;
       }
     });
+
+    const saveUpdatBtn = document.getElementById("saveUpdateBtn");
+    saveUpdatBtn.addEventListener("click", function () {
+      const selectedTr = document.querySelector("tr.selected");
+    });
   </script>
 </html>
