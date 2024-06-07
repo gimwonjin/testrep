@@ -42,7 +42,8 @@
       <button class="submit">컬러등록</button>
     </div>
   </body>
-  <script>
+  <script type="module">
+    import { addDatas } from "./resources/js/firebase.js";
     const options = document.getElementById("mbti-options");
     mbtiArr = [
       { mbti: "E", name: "외향형" },
@@ -63,7 +64,7 @@
             <span class="mbti-char">${info.mbti}</span>
             ${info.name}
           </div>
-        
+
         `
       );
     });
@@ -113,7 +114,7 @@
     });
 
     const randomBtn = document.querySelector(".random");
-    randomBtn.addEventListener("click", function () {
+    randomBtn.addEventListener("click", async function () {
       const colorArr = [];
       for (let i = 0; i < 3; i++) {
         colorArr.push(parseInt(Math.random() * 256));
@@ -124,6 +125,32 @@
       colorInput.value = `#${hexColorCode.toUpperCase()}`;
       colorChip.style.backgroundColor = `#${hexColorCode}`;
       //   colorArr[0].toString(16).padStart(2, "0");
+    });
+
+    const submitBnt = document.querySelector("button-submit");
+    submitBnt.addEventListener("click", function () {
+      // mbti 가져오기
+      const selectedArr = document.querySelectorAll(".selected > span");
+      if (selectedArr.length !== 4) {
+        alert("네가지의 nbti 를 모두 선택하셔야 합니다");
+        return false;
+      }
+      const mbtiVal = Array.from(selectedArr).reduce((acc, cur) => {
+        return acc + cur.innerText;
+      }, "");
+      // color code 가져오기
+      const colorInput = colorInput.value.toLower.Case;
+      // 객체 형태로 만들기
+      const addObj = { mbti: mbtiVal, code: colorCode };
+
+      // addDatas 함수 가져오기
+      const result = addDatas("mbtiColor", addObj);
+      if (result) {
+        alert("mbti 컬러 등록을 성공했습니다");
+        window.location.reload;
+      } else {
+        alert("mbti 컬러 등록을 실패했습니다.관리자에게 문의하세요");
+      }
     });
   </script>
 </html>
