@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>파이어베이스 리마인드</title>
+    <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore-compat.js"></script>
+    <script src="./firebase.js"></script>
+  </head>
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+    body {
+      height: 100vh;
+    }
+    .container {
+      display: flex;
+      gap: 20px;
+    }
+    .form-container {
+      display: grid;
+      grid-template-columns: repeat(5, 1fr);
+    }
+    .form-item {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .form-item > .form-label {
+      width: 30%;
+    }
+    .selected {
+      background-color: yellow;
+    }
+    .active {
+      display: inline-block;
+    }
+    .noneActive {
+      display: none;
+    }
+  </style>
+  <body>
+    <div class="container">
+      <div>
+        <div>
+          <button id="saveBtn">회원정보저장</button>
+          <button id="updateBtn" class="active">회원정보수정</button>
+          <button id="saveUpdateBtn" class="noneActive">수정정보저장</button>
+          <button id="deleteBtn">회원정보삭제</button>
+        </div>
+        <table border="1">
+          <tr>
+            <th>이름</th>
+            <th>성별</th>
+            <th>나이</th>
+            <th>주소</th>
+            <th>전화번호</th>
+          </tr>
+        </table>
+        <div class="form-container">
+          <div class="form-item">
+            <div class="form-label"><span>이름</span></div>
+            <div class="form-input"><input type="text" name="name" /></div>
+          </div>
+          <div class="form-item">
+            <div class="form-label"><span>나이</span></div>
+            <div class="form-input"><input type="text" name="age" /></div>
+          </div>
+          <div class="form-item">
+            <div class="form-label"><span>성별</span></div>
+            <div class="form-input"><input type="text" name="gender" /></div>
+          </div>
+          <div class="form-item">
+            <div class="form-label"><span>이메일</span></div>
+            <div class="form-input"><input type="text" name="email" /></div>
+          </div>
+          <div class="form-item">
+            <div class="form-label"><span>전화번호</span></div>
+            <div class="form-input"><input type="text" name="tel" /></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+  <script>
+    let updateTarget;
+    async function getMembers() {
+      const querySnapshot = await getDatas("meber");
+      const tableTag = document.querySelector("table");
+      querySnapshot.forEach((doc) => {
+        const { name, age, gender, email, tel } = doc.data();
+        tableTag.insertAdjacentHTML(
+          "beforeend",
+          `
+                 <tr data-id=${doc.id}>
+                <td class="name">${name}</td>
+                <td class="gender">${gender}</td>
+                <td class="age">${age}</td>
+                <td class="email">${email}</td>
+                <td class="tel">${tel}</td>
+            </tr>
+        `
+        );
+      });
+    }
+    getMembers();
+
+    // table 에 클릭 이벤트 생성
+    const tableTag = document.querySelector("table");
+    tableTag.addEventListener("click", function (e) {
+      if (updateTarget) return false;
+      if (e.target.tagName != "TH" && e.target.tagName != "TABLE") {
+        e.target.parentElement.classList.toggle("selected");
+      }
+    });
+  </script>
+</html>

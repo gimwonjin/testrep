@@ -26,7 +26,6 @@
       </div>
       <div class="content">
         <a class="add-item" href="newColor.html">+ 새 컬러 등록하기</a>
-
         <ul class="items" id="items"></ul>
       </div>
     </div>
@@ -37,9 +36,12 @@
     async function getMbtiInfo() {
       const datas = await getDatas("mbtiColor");
       let idx = 1;
-
+      const arr = [];
       datas.forEach((doc) => {
+        const timestamp = doc._document.createTime.timestamp.seconds;
         const info = doc.data();
+        const newObj = { ...info, timestamp: timestamp };
+        arr.push(newObj);
         console.log(idx);
         items.insertAdjacentHTML(
           "afterbegin",
@@ -54,7 +56,30 @@
               class="item-color-chip"
               style="background-color: ${info.code}"
             ></div>
-            <div class="item-color-code">${info.code.toLocaleUpperCase()}</div>
+            <div class="item-color-code">${info.code.toUpperCase()}</div>
+          </li>
+        `
+        );
+        idx++;
+      });
+      arr.sort(function (a, b) {
+        return b.timestamp - a.timestamp;
+      });
+      arr.forEach((info) => {
+        items.insertAdjacentHTML(
+          "afterbegin",
+          `
+        <li class="item">
+            <div class="item-id">${idx}</div>
+            <div class="item-mbti">${info.mbti}</div>
+            <div class="item-arrow">
+              <img class="item-arrow-icon" src="../20240605/img/arrow.svg" />
+            </div>
+            <div
+              class="item-color-chip"
+              style="background-color: ${info.code}"
+            ></div>
+            <div class="item-color-code">${info.code.toUpperCase()}</div>
           </li>
         `
         );
