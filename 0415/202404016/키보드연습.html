@@ -1,12 +1,12 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="keyboardcss연습.css" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="키보드연습.css"
     <title>Document</title>
-  </head>
-  <body>
+</head>
+<body>
     <input type="text" id="my-input" />
     <div class="events">
       <div id="keydown" class="event">keydown</div>
@@ -124,53 +124,23 @@
         </div>
       </div>
     </div>
-  </body>
-  <script>
-    const myInput = document.getElementById("my-input");
-    const key = docsument.getElementById("key");
-    const code = document.getElementById("code");
-    const keydown = document.getElementById("keydown");
-    const keypress = document.getElementById("keypress");
-    const keyup = document.getElementById("keyup");
+</body>
+<script>
+    const myInput = document.getElementById('my-input');
+    const key = document.getElementById('key');
+    const code = document.getElementById('code');
+    const keydown = document.getElementById('keydown');
+    const keypress = document.getElementById('keypress');
+    const keyup = document.getElementById('keyup');
 
     function presskeyEvent() {
-      keypress.classList.add("check");
+        keypress.classList.add('check')
 
-      setTimeout(function () {
-        keypress.classList.remove("check");
-      }, 300);
+        setTimeout(function () {
+            keypress.classList.remove('check')
+        }, 300)
     }
 
-    function downkeyEvent(e) {
-      const el = document.querySelector(`#${e.code}`);
-      console.log(`key : ${e.key}, code : ${e.code}`);
-
-      keydown.classList.add("check");
-
-      el.classList.add("on");
-
-      key.innerHTML = `key: ${e.key}`;
-      code.innerHTML = `code: ${e.code}`;
-
-      setTimeout(function () {
-        keydown.classList.remove("check");
-      });
-    }
-
-    function upkeyEvent(e) {
-      const el = document.querySelector(`#${e.code}`);
-
-      keyup.classList.add("check");
-
-      el.classList.remove("on");
-
-      setTimeout(function () {
-        keyup.classList.remove("check");
-      }, 300);
-    }
-
-    myInput.addEventListener("keypress", presskeyEvent);
-    myInput.addEventListener("keydown", downkeyEvent);
-    myInput.addEventListener("keyup", upkeyEvent);
-  </script>
+    myInput.addEventListener('keypress', presskeyEvent)
+</script>
 </html>
