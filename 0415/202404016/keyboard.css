@@ -9,9 +9,9 @@
   height: 34px;
   margin: 10px 0;
   border: 1px solid #333333;
-  display: flex;
   border-left: 0;
-  justify-content: space-around;
+  display: flex;
+  justify-content: space-between;
 }
 
 .event {
@@ -19,9 +19,6 @@
   padding: 5px;
   text-align: center;
   border-left: 1px solid #333333;
-  background-color: #00fa9a;
-  box-shadow: 5px 5px 5px 5px black;
-  margin: 1px;
 }
 
 .check {
@@ -31,12 +28,15 @@
 #keypress.check {
   background-color: #0cd30c;
 }
+
 #keydown.check {
-  background-color: #eb2f2f;
+  background-color: #ed2f2f;
 }
+
 #keyup.check {
   background-color: #2757f5;
 }
+
 .function-keys {
   width: 700px;
   margin-bottom: 10px;
@@ -57,14 +57,12 @@
 .key {
   width: 43px;
   height: 43px;
-  border: 1px solid #333333;
-  border-radius: 3px;
   margin: 1px;
+  border: 1px solid #333333;
+  border-radius: 10px;
   display: flex;
   justify-content: center;
   align-items: center;
-  background-color: #afeeee;
-  box-shadow: 5px 5px 5px 5px;
 }
 
 #Backspace,
@@ -82,8 +80,8 @@
   width: 110px;
 }
 
-#ControlLeft,
-#ControlRight,
+#ContorlLeft,
+#CotorlRight,
 #AltLeft,
 #AltRight,
 #MetaLeft,
@@ -92,16 +90,11 @@
 }
 
 #Space {
-  width: 284px;
+  width: 280px;
 }
 
 .on {
-  background-color: #979797;
-
+  background-color: #999999;
   box-shadow: inset 0 0 5px rgb(0, 0, 0, 0.5);
   transform: translateY(1px);
-}
-:root {
-  --main-color: white;
-  --font-color: whiteas;
 }

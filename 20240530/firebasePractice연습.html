@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <style>
+    tr {
+      cursor: pointer;
+      height: 50px;
+    }
+    .selected {
+      background-color: yellow;
+    }
+    .active {
+      pointer-events: auto;
+    }
+    .nonActive {
+      pointer-events: none;
+    }
+  </style>
+  <body>
+    <form name="joinForm">
+      <p>
+        <label>이름 : </label>
+        <input type="text" name="name" />
+      </p>
+      <p>
+        <label>나이 : </label>
+        <input type="text" name="age" />
+      </p>
+      <p>
+        <label>이메일 : </label>
+        <input type="text" name="email" />
+      </p>
+      <p>
+        <label>전화번호 : </label>
+        <input type="text" name="tel" />
+      </p>
+      <p>
+        <label>성별 : </label>
+        <input type="text" name="gender" />
+      </p>
+    </form>
+    <button id="saveBtn">데이터저장</button>
+
+    <table border="1"></table>
+    <br /><br />
+    <button id="updateBtn">회원정보수정</button>
+    <button id="saveUpdateBtn">회원정보저장</button>
+    <button id="deleteBtn">회원삭제</button>
+  </body>
+  <script type="module">
+    import {
+      db,
+      getDatas,
+      addDatas,
+      deleteDatas,
+      updateDatas,
+    } from "../resources/js/firebase.js";
+    async function gerMembers() {
+      console.log("getMembers 함수 시작");
+      const snapshot = await getDatas("meber");
+      const tableTag = document.querySelector("table");
+      let tagStr = `
+        <tr>
+          <th>이름</th>
+          <th>나이</th>
+          <th>성별</th>
+          <th>이메일</th>
+          <th>전화번호</th>
+        </tr>
+        `;
+      snapshot.forEach((doc) => {
+        const { name, age, gender, tel, email } = doc.date();
+        tagStr += `
+               <tr>
+                   <td class="name">${name}</td>
+                   <td class="age">${age}</td>
+                   <td class="gender">${gender}</td>
+                   <td class="email">${email}</td>
+                   <td class="tel">${tel}</td>
+                   <input type='hidden' value='${doc.id}' />
+               </tr>
+           `;
+      });
+      tableTag.innerHTML = tagStr;
+      console.log("getMembers 함수 종료");
+    }
+
+    function getMembersHandleTrClick() {
+      getMembers().then(handleTrClick);
+    }
+
+    getMembersHandleTrClick();
+
+    function handleTrClick() {
+      console.log("handleTrClick 이벤트 시작");
+      const trs = document.querySelectorAll("tr");
+      trs.forEach((tr) => {
+        tr.addEventListener("click", (e) => {
+          if (e.target.tagName != "TH") tr.classList.toggle("selected");
+        });
+      });
+      console.log("handleTrClick 이벤트 종료");
+    }
+
+    const deleteBtn = document.getElementById("deleteBtn");
+    deleteBtn.addEventListener("click", function () {
+      const selectedTrs = document.querySelectorAll("tr.selected");
+      if (selectedTrs.length == 0) {
+        alert("삭제할 데이터가 없습니다.");
+        return false;
+      }
+      selectedTrs.forEach((tr) => {
+        const docId = tr.lastElementChild.value;
+        deleteDatas("member", docId);
+      });
+      getMembersHandleTrClick();
+    });
+
+    const updateBtn = document.getElementById("updateBtn");
+    updateBtn.addEventListener("click", function () {
+      const selectedTrs = document.querySelectorAll("tr.selected");
+      if (selectedTrs.length == 0) {
+        alert("수정할 회원을 선택해주세요");
+        return false;
+      } else if (selectedTrs.length >= 2) {
+        alert("회원정보 수정은 하나씩만 가능합니다.");
+        return false;
+      }
+
+      const selectedTr = selectedTrs[0];
+      const trChildren = selectedTr.children;
+      console.log(trChildren);
+      for (let i = 0; i < trChildren.length; i++) {
+        trChildren[i].addEventListener("click", (e) => {
+          e.stopPropagation();
+        });
+        const tdText = trChildren[i].innerText;
+        trChildren[i].innerHTML = `<input type='text' value='${tdText}' />`;
+      }
+    });
+
+    const saveUpdatBtn = document.getElementById("saveUpdateBtn");
+    saveUpdatBtn.addEventListener("click", function () {
+      const selectedTr = document.querySelector("tr.selected");
+    });
+  </script>
+</html>

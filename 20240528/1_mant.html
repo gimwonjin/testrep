@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="../resources/js/jquery-3.6.4.js"></script>
+  </head>
+  <style>
+    p {
+      cursor: pointer;
+    }
+
+    img {
+      width: 200px;
+      height: 200px;
+    }
+  </style>
+  <body>
+    <p>강아지</p>
+    <p>공룡</p>
+    <p>다람쥐</p>
+    <p>피카츄</p>
+  </body>
+  <script>
+    const imgArr = ["강아지.jpg", "공룡.jpg", "다람쥐.jpg", "피카츄.jpg"];
+    $("p").on("click", function () {
+      const index = $(this).index();
+      const pTag = $("p");
+      console.log(pTag);
+      console.log(index);
+      const imgTag = `<img src="../resources/img/${imgArr[index]}" />`;
+      // ~에 ~무엇을 ==> append
+      //   $(this).append(imgTag);
+      // ~무엇을 ~에 ==> appendTo
+      //   $(imgTag).appendTo(this);
+      //~에 ~무엇을
+      //   $(this).prepend(imgTag);
+      // ~무엇을 ~에 ==> prependTo
+      //   $(imgTag).prependTo(this);
+
+      // 요소 외부에 추가
+      //   $(this).after(imgTag);
+      //   $(imgTag).insertAfter(this);
+      //   $(this).before(imgTag);
+      //   $(imgTag).insertBefore(this);
+    });
+  </script>
+</html>

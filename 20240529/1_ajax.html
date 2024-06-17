@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <h1>Authors</h1>
+    <u1 id="authors"></u1>
+    <button>posts</button>
+    <button>comments</button>
+    <button>albums</button>
+    <button>photos</button>
+    <button>users</button>
+    <button>todos</button>
+  </body>
+  <script>
+    const url = "https://jsonplaceholder.typicode.com/posts";
+    // fetch 함수는 prmise 객체를 반환
+    // promise ==> 비동기 통신에 대한 상태와 결과값을 담고 있는 객체
+    // promise state 값
+    // pending : 진행중
+    // fufilled : 작업(통신) 성공
+    // rejected : 작업(통신) 실패
+
+    // reponse.json()  : 응답을 JSON 형태로 파싱한다
+    // response.text() : 응답을 읽고 string 형태로 반환한다.
+    // response.formDate() : 응답을 FormDate 객체 형태로 반환한다.
+    // response.blod() : 응답을 Blob(바이너리 데이터) 형태로 반환한다.
+
+    console.log("Start!!!");
+    fetch(url)
+      //   .then((response) => response.json())
+      .then((response) => response.text())
+      .then((result) => console.log(JSON.parse(result)));
+    console.log("End!!!");
+    // start 콘솔이 먼저 찍힘
+    // fethc 만났는데 여기서 리턴하는 Promis의 then 함수로 콜백을 등록
+    // 뒤에 있는 then 콜백을 등록( 등록만 할 뿐 실행 하지않함)
+    // 서버(요청한 쪽)에서 Prmise 가 도착하면 thne 함수로 등록했던 콜백들이 실행
+  </script>
+</html>
