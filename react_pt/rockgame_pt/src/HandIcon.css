@@ -15,6 +15,3 @@
   margin: 70px auto 0;
   user-select: none;
 }
-.Hand.winner {
-    background-image: url(./assets/yellow-win.svg);
-}
