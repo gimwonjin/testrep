@@ -1,4 +1,4 @@
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.6.0/firebase-app.js";
+import { initializeApp } from "firebase/app";
 import {
   getFirestore,
   getDocs,
@@ -9,15 +9,16 @@ import {
   deleteDoc,
   getDoc,
   updateDoc,
-} from "https://www.gstatic.com/firebasejs/10.6.0/firebase-firestore.js";
+} from "firebase/firestore";
 
 const firebaseConfig = {
-  apiKey: "AIzaSyDRy1_HpkQxCPpCsB5PVlCZjEsIdgmkdSM",
-  authDomain: "myproject-5500b.firebaseapp.com",
-  projectId: "myproject-5500b",
-  storageBucket: "myproject-5500b.appspot.com",
-  messagingSenderId: "166825305008",
-  appId: "1:166825305008:web:7bbc2574fa99e3f3deec75",
+  apiKey: "AIzaSyBW4JEE62hgospHmPRpwU-XtP6Fmscju8k",
+  authDomain: "movie-foodit.firebaseapp.com",
+  projectId: "movie-foodit",
+  storageBucket: "movie-foodit.appspot.com",
+  messagingSenderId: "434671058593",
+  appId: "1:434671058593:web:849b2456ae1a0043c83ae0",
+  measurementId: "G-EC88PCSS7R",
 };
 
 // Initialize Firebase
@@ -27,8 +28,12 @@ const db = getFirestore(app);
 async function getDatas(collectionName) {
   const collect = await collection(db, collectionName);
   const snapshot = await getDocs(collect);
+  const resultData = snapshot.docs.map((doc) => ({
+    docId: doc.id,
+    ...doc.data(),
+  }));
 
-  return snapshot;
+  return resultData;
 }
 async function addDatas(collectionName, dataObj) {
   try {
@@ -58,7 +63,7 @@ async function updateDatas(collectionName, docId, upadteInfoObj) {
   // updateDoc(문서데이터, 수정할 정보객체);
   const docRef = await doc(db, collectionName, docId);
   // const docData = await getDoc(docRef);
-  await updateDoc(docData, upadteInfoObj);
+  await updateDoc(docRef, upadteInfoObj);
 }
 
 export { db, getDatas, addDatas, deleteDatas, updateDatas };
