@@ -2,26 +2,57 @@ import "./App.css";
 import logoImg from "../assets/logo.png";
 import ReviesFrom from "../ReviewFrom";
 import ReviewList from "../ReviewList";
-import mockItems from "mock.j";
+// import mockItems from "mock.j";
 import { useEffect, useState } from "react";
-import { getDatas } from "../firebase";
+import { getDatas, getDatasByOrder, getDatasByOrderLimit } from "../firebase";
+import { limit } from "firebase/firestore";
 
-function AppSortButton({ children }) {
-  return <button className="AppSortButton selected">{children}</button>;
+const LIMIT = 10;
+
+function AppSortButton({ children, onClick, selected }) {
+  let isSelected;
+  if (selected) {
+    isSelected = "selected";
+  }
+  return (
+    <button className={`AppSortButton ${isSelected}`} onClick={onClick}>
+      {children}
+    </button>
+  );
 }
 
 function App() {
   const [items, setItems] = useState([]);
+  const [order, setOrder] = useState("createdAt");
+  const [lq, setLa] = useState();
+  const [hasNext, setHasNext] = useState(true);
 
-  const handleLoad = async () => {
-    const resultData = await getDatas("movie");
+  const handleLoad = async (options) => {
+    const { resultData, lastQuery } = await getDatasByOrderLimit(
+      "movie",
+      options
+    );
     console.log(resultData);
-    setItems(resultData);
+    if (!options.lq) {
+      setItems(resultData);
+    } else {
+      setItems((prevItems) => [...prevItems, ...resultData]);
+    }
+    if (!lastQuery) {
+      setHasNext(false);
+    }
+    setLa(lastQuery);
+  };
+  const handleNewestClick = () => setOrder("createdAt");
+  const handleBestClick = () => setOrder("rating");
+
+  const handleMoreClick = () => {
+    handleLoad({ order: order, limit: LIMIT, lq: lq });
   };
 
   useEffect(() => {
-    handleLoad();
-  }, []);
+    handleLoad({ order: order, limit: LIMIT });
+  }, [order]);
 
   return (
     <div className="App">
@@ -39,12 +70,28 @@ function App() {
           <ReviesFrom />
         </div>
         <div className="App-sorts">
-          <AppSortButton>최신순</AppSortButton>
-          <AppSortButton>베스트순</AppSortButton>
+          <AppSortButton
+            selected={order === "createdAt"}
+            onClick={handleNewestClick}
+          >
+            최신순
+          </AppSortButton>
+          <AppSortButton
+            selected={order === "rating"}
+            onClick={handleBestClick}
+          >
+            베스트순
+          </AppSortButton>
         </div>
         <div className="App-ReviewList">
           <ReviewList items={items} />
-          <button className="App-load-more-button">더보기</button>
+          <button
+            className="App-load-more-button"
+            onClick={handleMoreClick}
+            disabled={!hasNext}
+          >
+            더보기
+          </button>
         </div>
       </div>
       <footer className="App-footer">
