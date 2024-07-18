@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import Login from './Login';
 
 const SIZE = {
   large: 24,
@@ -7,20 +6,18 @@ const SIZE = {
   smail: 16,
 };
 
-const LoginButton = styled.button`
-  justify-content: center;
-  align-items: center;
-  display: block;
-  background-color: #6750a4;
+const Button2 = styled.button`
+  background-color: #ffeb00;
   border: none;
   color: #fff;
   padding: 16px;
   font-size: 18px;
   border-radius: 8px;
+  color: #000000;
   cursor: pointer;
 
   &:hover {
     background-color: #7760b4;
   }
 `;
-export default LoginButton;
+export default Button2;
