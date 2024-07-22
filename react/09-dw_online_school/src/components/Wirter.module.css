@@ -1,0 +1,22 @@
+.wirter {
+display: flex;
+align-items: center;
+gap: 10px;
+}
+.wirter .info{
+/* display: flex;
+flex-direction: column;
+gap: 5px; */
+}
+.wirter .naem{
+    margin-bottom: 5px;
+    font-size: 14px;
+    font-weight: 500;
+    color: #494949;
+}
+.wirter .level{
+    font-size: 12px;
+    font-weight: 500;
+    color: #c4c4c4;
+
+}
