@@ -71,8 +71,8 @@ body {
   background-color: transparent;
   cursor: pointer;
   top: 50%;
+  left: 200px;
   transform: translateY(-50%);
-  right: 0;
 }
 .App-orders {
   display: flex;

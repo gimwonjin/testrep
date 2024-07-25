@@ -46,6 +46,7 @@ function createPath(path) {
 }
 
 async function addDatas(collectionName, addObj) {
+
   // 파일저장==> 스토리지의 이미지 url을 addObj의 imgUrl 값으로 변경
   const path = createPath("food/");
   const url = await uploadImge(path, addObj.imgUrl);
@@ -61,7 +62,10 @@ async function addDatas(collectionName, addObj) {
   addObj.upaatedAt = time;
 
   // 컬렉션 저장
-  await addDoc(getCollection(collectionName), addObj);
+const reslut = await addDoc(getCollection(collectionName), addObj);
+const docSnap = await getDoc(reslut);
+const resultData = {...docSnap.data(), docId: docSnap.id};
+return resultData;
 }
 
 async function uploadImge(path, file) {
@@ -87,8 +91,9 @@ async function getLastNum(collectionName, field) {
 
 async function getDatasOrderByLimit(collectionName, options) {
   const { fieldName, limits } = options;
+
   let q;
-  if (!options.l1) {
+  if (!options.lq) {
     q = query(
       getCollection(collectionName),
       orderBy(fieldName, "desc"),
@@ -112,4 +117,34 @@ async function getDatasOrderByLimit(collectionName, options) {
   return { resultData, lastQuery };
 }
 
-export { addDatas, getDatasOrderByLimit };
+async function deleteDatas(collectionName, docId, imgUrl) {
+  // 스토리지에 있는 이미지를 삭제할 떄 필요한것 ==> 파일명(경로포함)
+  // 스토리지 객체 생성
+  const storage = getStorage();
+  let messag;
+  try {
+    // 삭제할 파일의 참조객체 생성(ref함수 사용)
+    messag = "이미지 삭제에 실패했습니다. \n관리자에게 문의하세요.";
+    const deleteRef = ref(storage, imgUrl);
+    // 파일 삭제
+    await deleteObject(deleteRef);
+
+    messag = "문서 삭제에 실패했습니다. \n관리자에게 문의하세요.";
+
+    // 삭제할 문서의 참조객체 셍성(doc 함수 사용)
+    const deleteDocRef = doc(db, collectionName, docId);
+
+    // 문서삭제
+    await deleteDoc(deleteDocRef);
+
+    return { result: true, message: messag };
+  } catch (error) {
+    return { result: false, message: messag };
+  }
+}
+
+async function updateDatas() {
+  console.log("updateDatas 함수 실행")
+}
+
+export { addDatas, getDatasOrderByLimit, deleteDatas, updateDatas };
