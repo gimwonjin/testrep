@@ -10,6 +10,7 @@ import QusetionPage from "./pages/QusetionPage";
 import WishListPage from "./pages/WishListPage";
 
 function Main(props) {
+  /**/
   return (
     <BrowserRouter basename={process.env.PUBLIC_URL}>
       <Routes>
